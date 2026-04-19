@@ -1,15 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<style>
-  /* iOS safe area support */
-  body { padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); }
-  .nav { padding-bottom: env(safe-area-inset-bottom); }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Forj</title>
 <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -200,6 +194,202 @@ select option{background:#1a1a1a;}
 .toggle-btn.on { background:var(--a); }
 .toggle-btn.on::after { left:23px; }
 
+
+/* ================================================================
+   MOBILE RESPONSIVE FIXES
+   Hide sidebar, fix nav overflow, fix layouts for small screens
+   ================================================================ */
+@media (max-width: 600px) {
+
+  /* ── Hide sidebar completely on mobile ── */
+  .sidebar { display: none !important; }
+
+  /* ── Nav pills: scrollable, smaller text ── */
+  .pills {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+    max-width: calc(100vw - 120px);
+  }
+  .pills::-webkit-scrollbar { display: none; }
+  .pill { font-size: 11px !important; padding: 4px 9px !important; white-space: nowrap; }
+
+  /* ── Content takes full width ── */
+  .content { padding: 14px !important; }
+  .app { height: calc(100vh - 54px); }
+
+  /* ── Page header ── */
+  .ph { margin-bottom: 14px !important; }
+  .pt { font-size: 22px !important; }
+
+  /* ── Dashboard grid: stack on mobile ── */
+  .g4 { grid-template-columns: repeat(2,1fr) !important; }
+  .g2 { grid-template-columns: 1fr !important; }
+  .g3 { grid-template-columns: repeat(2,1fr) !important; }
+
+  /* ── Dashboard two-column card layout ── */
+  [style*="grid-template-columns:1.3fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Profile page two-column ── */
+  [style*="grid-template-columns:260px 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Recipe detail two-column ingredients/method ── */
+  [style*="grid-template-columns:1fr 1fr;gap:18px;margin-bottom:16px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Recipe macro tiles ── */
+  [style*="grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px"] {
+    grid-template-columns: repeat(2,1fr) !important;
+  }
+
+  /* ── Recipe grid cards ── */
+  #recGrid { grid-template-columns: 1fr !important; }
+
+  /* ── Block view day cards ── */
+  [style*="grid-template-columns:repeat(auto-fill,minmax(230px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Settings 3-col inputs ── */
+  .fr3 { grid-template-columns: 1fr !important; }
+  .fr  { grid-template-columns: 1fr !important; }
+
+  /* ── Day picker 7-col ── */
+  .dg { grid-template-columns: repeat(7,1fr) !important; }
+  .db { font-size: 10px !important; padding: 6px 2px !important; }
+
+  /* ── Session set rows ── */
+  .sh { grid-template-columns: 22px 1fr 1fr 1fr 50px 20px !important; font-size: 8px !important; }
+  .sr { grid-template-columns: 22px 1fr 1fr 1fr 50px 20px !important; }
+
+  /* ── Modals full width ── */
+  .modal {
+    width: calc(100vw - 32px) !important;
+    max-width: 100% !important;
+    margin: 16px !important;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  /* ── Block tabs scrollable ── */
+  .btabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* ── Toast position ── */
+  .toast { left: 12px !important; right: 12px !important; bottom: 24px !important; }
+
+  /* ── Supplement cards ── */
+  .sg { grid-template-columns: repeat(3,1fr) !important; }
+
+  /* ── Achievement grid ── */
+  .ag { grid-template-columns: repeat(2,1fr) !important; }
+
+  /* ── Meal planner: horizontal scroll ── */
+  #planGrid { 
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    grid-template-columns: repeat(7, 130px) !important;
+  }
+
+  /* ── Recipe detail title area ── */
+  #recDetail [style*="display:flex;align-items:flex-start;justify-content:space-between"] {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  /* ── XP widget in nav ── */
+  .xpw { display: none !important; }
+
+  /* ── Streak display ── */
+  .stk { font-size: 11px !important; }
+
+  /* ── Sticky timer cards in warmup/mobility ── */
+  #wuTimerCard, .card[style*="position:sticky"] {
+    padding: 8px 10px !important;
+  }
+
+  /* ── Settings page ── */
+  .settings-card { padding: 12px !important; }
+
+  /* ── RPE chart ── */
+  #page-calc table { font-size: 10px !important; }
+}
+
+/* ── Extra small phones (iPhone SE etc) ── */
+@media (max-width: 375px) {
+  .pill { font-size: 10px !important; padding: 4px 7px !important; }
+  .content { padding: 10px !important; }
+}
+
+
+@media (max-width:600px){
+  .rec-detail-grid { grid-template-columns: 1fr !important; }
+}
+
+
+/* ── Mobile sidebar overlay ─────────────────────────────────────── */
+.sb-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 200;
+  backdrop-filter: blur(2px);
+}
+.sb-overlay.on { display: block; }
+
+/* Mobile sidebar slides in from left */
+@media (max-width: 600px) {
+  .sidebar {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed !important;
+    left: -220px;
+    top: 54px;
+    bottom: 0;
+    width: 210px !important;
+    z-index: 201;
+    transition: left 0.25s ease;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.5);
+  }
+  .sidebar.open { left: 0 !important; }
+
+  /* Hamburger button */
+  .ham-btn {
+    display: flex !important;
+  }
+}
+
+/* Hide hamburger on desktop */
+.ham-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+.ham-btn span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--t);
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+.ham-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.ham-btn.open span:nth-child(2) { opacity: 0; }
+.ham-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 </style>
 </head>
 <body>
@@ -221,6 +411,7 @@ select option{background:#1a1a1a;}
 <!-- APP -->
 <nav class="topnav" id="nav" style="display:none;">
   <div class="logo" style="font-size:26px;">Forj</div>
+  <button class="ham-btn" id="hamBtn" onclick="toggleSidebar()"><span></span><span></span><span></span></button>
   <div class="pills" id="navPills"></div>
   <div class="xpw" onclick="goPage('profile')">
     <div><div style="font-size:9px;color:var(--m);letter-spacing:.5px;">LVL</div><div class="xplv" id="navLv">1</div></div>
@@ -2639,26 +2830,44 @@ function stToggle(key, btnId){
 // ── Reset ─────────────────────────────────────────────────────────
 function stConfirmReset(){
   if(!confirm('This will erase ALL your data and restart the app. Are you sure?')) return;
-  try {
-    if(window.ReactNativeWebView) {
-      window.ReactNativeWebView.postMessage(JSON.stringify({type:'CLEAR_STATE'}));
-    } else {
-      localStorage.removeItem('forjState');
-    }
-  } catch(e){}
+  localStorage.removeItem('forjState');
   location.reload();
 }
 
 // ── Persist ───────────────────────────────────────────────────────
 function stSave(){
-  // Save via WebView bridge (React Native AsyncStorage) with localStorage fallback
-  const payload = JSON.stringify(S);
+  try { localStorage.setItem('forjState', JSON.stringify(S)); } catch(e){}
+}
+
+
+// ── Mobile sidebar toggle ────────────────────────────────────────
+function toggleSidebar(){
   try {
-    if(window.ReactNativeWebView) {
-      window.ReactNativeWebView.postMessage(JSON.stringify({type:'SAVE_STATE', data:payload}));
+    const sb=document.querySelector('.sidebar');
+    const overlay=document.getElementById('sbOverlay');
+    const btn=document.getElementById('hamBtn');
+    if(!sb) return;
+    const isOpen=sb.classList.contains('open');
+    if(isOpen){
+      sb.classList.remove('open');
+      if(overlay) overlay.classList.remove('on');
+      if(btn) btn.classList.remove('open');
     } else {
-      localStorage.setItem('forjState', payload);
+      sb.classList.add('open');
+      if(overlay) overlay.classList.add('on');
+      if(btn) btn.classList.add('open');
     }
+  } catch(e){}
+}
+
+function closeSidebar(){
+  try {
+    const sb=document.querySelector('.sidebar');
+    const overlay=document.getElementById('sbOverlay');
+    const btn=document.getElementById('hamBtn');
+    if(sb) sb.classList.remove('open');
+    if(overlay) overlay.classList.remove('on');
+    if(btn) btn.classList.remove('open');
   } catch(e){}
 }
 
@@ -2666,12 +2875,12 @@ function stSave(){
 // BOOT & NAV
 // ================================================================
 function boot(){
-  // Load persisted state — bridge provides it via LOAD_STATE message before boot
-  // State is injected by React Native via window._forjInitState before this runs
+  // Load persisted state from localStorage
   try {
-    const saved = window._forjInitState || localStorage.getItem('forjState');
+    const saved = localStorage.getItem('forjState');
     if(saved){
-      const parsed = typeof saved === 'string' ? JSON.parse(saved) : saved;
+      const parsed = JSON.parse(saved);
+      // Merge saved state into S — preserve any new keys added in this version
       Object.keys(parsed).forEach(k=>{ if(k!=='recipes'||!S.recipes?.length) S[k]=parsed[k]; });
     }
   } catch(e){}
@@ -2726,6 +2935,8 @@ function goPage(name){
   const pg=document.getElementById('page-'+name);if(pg)pg.classList.add('on');
   document.querySelectorAll('.sbi').forEach(b=>b.classList.remove('on'));
   const sb=document.getElementById('sb-'+name);if(sb)sb.classList.add('on');
+  // Auto-close sidebar on mobile when page selected
+  if(window.innerWidth<=600 && typeof closeSidebar==='function') closeSidebar();
   const fn={dashboard:renderDash,program:renderProg,session:initSess,log:renderLog,prs:renderPRs,nutrition:renderNut,recipes:renderRecs,planner:renderPlanner,shopping:renderShop,social:renderSoc,profile:renderProf,warmup:renderWarmup,mobility:renderMobility,settings:renderSettings};
   if(fn[name])fn[name]();
 }
@@ -3814,7 +4025,7 @@ function openRec(id){
     ${r.upgrade?`<div style="background:rgba(77,159,255,.07);border:1px solid rgba(77,159,255,.2);border-radius:var(--r);padding:10px 12px;margin-bottom:10px;font-size:12px;"><span style="font-weight:700;color:#88bbff;">Upgrade Option:</span> ${r.upgrade}</div>`:''}
     ${r.cutting_bulking?`<div style="background:var(--s2);border:1px solid var(--b2);border-radius:var(--r);padding:10px 12px;margin-bottom:14px;font-size:12px;"><span style="font-weight:700;color:var(--t);">Cutting / Bulking:</span> ${r.cutting_bulking}</div>`:''}
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:16px;">
+    <div class="rec-detail-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:16px;">
       <div>
         <div style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;color:var(--m);margin-bottom:10px;">Ingredients</div>
         <ul style="list-style:none;">
@@ -4359,26 +4570,6 @@ function mobReset(){
   document.getElementById('mobGoBtn').textContent='Start';
   mobUpdateProgress();
 }
-
-
-  // ── WebView Bridge: receive messages from React Native ────────
-  window.addEventListener('message', function(event) {
-    try {
-      const msg = JSON.parse(event.data);
-      if(msg.type === 'LOAD_STATE' && msg.data) {
-        window._forjInitState = msg.data;
-      }
-    } catch(e){}
-  });
-  // Also listen for iOS (different event name)
-  document.addEventListener('message', function(event) {
-    try {
-      const msg = JSON.parse(event.data);
-      if(msg.type === 'LOAD_STATE' && msg.data) {
-        window._forjInitState = msg.data;
-      }
-    } catch(e){}
-  });
 
 </script>
 </body>
